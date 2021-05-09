@@ -1,8 +1,20 @@
 // load in the imports
 const error = require('debug')('api:error');
 const express = require('express');
+const morganDebug = require('morgan-debug');
+// routes
+const decisionRouter = require('./routes/decisions');
+const optionRouter = require('./routes/options');
 // create an express application
 const app = express();
+// checks to see if the content-type is json and parses it into req.body
+app.use(express.json());
+// log all requests
+app.use(morganDebug('api:request', 'dev'));
+// setup the app to use the router at /decisions
+app.use('/decisions', decisionRouter);
+// setup the app to use the router at /options
+app.use('/options', optionRouter);
 // four params are required to mark this as a error handling middleware
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
