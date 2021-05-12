@@ -4,6 +4,8 @@ const express = require('express');
 const error = require('debug')('web:error');
 // load in the axios middleware
 const API = require('./utils/API');
+// load routers
+const publicRoutes = require('./routes/public');
 // create an express app
 const app = express();
 
@@ -16,6 +18,8 @@ app.use(API);
 app.set('view engine', 'pug');
 // set the view folder as the default place to render from
 app.set('views', `${__dirname}/views`);
+// setup routers
+app.use('/', publicRoutes);
 
 // four params are required to mark this as an error handling middleware
 // the comment below allows for eslint to not throw an error
