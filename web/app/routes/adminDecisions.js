@@ -8,7 +8,10 @@ const validationCtrl = require('../controllers/validation');
 // GET /admin/decisions/new - loads the form to create a new decision
 router.get('/new', decisionCtrl.renderDecisionForm);
 // POST /admin/decisions/new - validate the data and then save it
-router.post('/new', validationCtrl.validate('createDecisions'));
+router.post('/new', [
+  validationCtrl.validate('createDecisions'),
+  decisionCtrl.renderDecisionFormWithErrors,
+]);
 
 // export the route from this file
 module.exports = router;
