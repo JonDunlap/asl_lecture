@@ -27,6 +27,10 @@ router.get('/delete/:id', [
   decisionCtrl.goBackOnError,
   decisionCtrl.deleteDecision,
 ]);
+// GET /admin/decisions/ - loads all the user's decisions
+router.get('/', decisionCtrl.renderDashboard);
+// GET /admin/decisions/:id - loads the details page
+router.get('/:id', decisionCtrl.renderAdminDetail);
 
 // export the route from this file
 module.exports = router;

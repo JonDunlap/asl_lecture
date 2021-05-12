@@ -68,3 +68,20 @@ exports.deleteDecision = async (req, res) => {
   // redirect to the dashboard
   res.redirect('/admin/decisions');
 };
+
+exports.renderDashboard = async (req, res) => {
+  const decisions = await req.API.get('/decisions');
+
+  res.render('decisions/list', { decisions });
+};
+
+exports.renderAdminDetail = async (req, res) => {
+  const { id } = req.params;
+
+  // get the details of the decision
+  const decision = await req.API.get(`/decisions${id}`);
+  // get the options for this decision
+  const options = await req.API.get(`/options?decisionId=${id}`);
+
+  res.render('decisions/detail', { decision, options });
+};
