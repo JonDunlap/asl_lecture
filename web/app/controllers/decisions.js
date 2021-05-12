@@ -79,7 +79,7 @@ exports.renderAdminDetail = async (req, res) => {
   const { id } = req.params;
 
   // get the details of the decision
-  const decision = await req.API.get(`/decisions${id}`);
+  const decision = await req.API.get(`/decisions/${id}`);
   // get the options for this decision
   const options = await req.API.get(`/options?decisionId=${id}`);
 
