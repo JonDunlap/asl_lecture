@@ -11,6 +11,7 @@ router.get('/new', decisionCtrl.renderDecisionForm);
 router.post('/new', [
   validationCtrl.validate('createDecisions'),
   decisionCtrl.renderDecisionFormWithErrors,
+  decisionCtrl.saveDecision,
 ]);
 
 // export the route from this file

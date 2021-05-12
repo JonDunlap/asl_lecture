@@ -18,3 +18,14 @@ exports.renderDecisionFormWithErrors = (errors, req, res, next) => {
   // send the title, type, and errors as variables to the view
   res.render('decisions/form', { title, type, errors });
 };
+
+exports.saveDecision = async (req, res) => {
+  // get the data the user submitted
+  const { title, type } = req.body;
+
+  // send the new decision to the api
+  const data = await req.API.post('/decisions', { title, type });
+
+  // redirect to the edit decision form
+  res.redirect(`/admin/decisions/edit/${data.id}`);
+};
