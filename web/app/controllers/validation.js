@@ -16,6 +16,14 @@ const checks = {
     .withMessage('Decision type is required.')
     .isIn(['public', 'private'])
     .withMessage('Decisions must be public or private.'),
+  value: check('value')
+    .exists()
+    .withMessage('Option value is required.')
+    .isLength(1)
+    .withMessage('Option value is required to be at least 1 character long'),
+  decisionId: check('decisionId')
+    .isUUID()
+    .withMessage('Decision ID is not valid, please go back and try again.'),
 };
 
 const checkForErrors = (req, res, next) => {
@@ -39,6 +47,18 @@ exports.validate = (method) => {
     }
 
     case 'deleteDecision': {
+      return [checks.id, checkForErrors];
+    }
+
+    case 'createOption': {
+      return [checks.value, checks.decisionId, checkForErrors];
+    }
+
+    case 'editOption': {
+      return [checks.id, checks.value, checks.decisionId, checkForErrors];
+    }
+
+    case 'deleteOption': {
       return [checks.id, checkForErrors];
     }
 
