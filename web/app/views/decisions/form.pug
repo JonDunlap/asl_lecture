@@ -1,6 +1,6 @@
 extends ../_layout
 block content
-	h1.heading New Decision
+	h1.heading= id ? 'Edit Decision' : 'New Decision'
 	form.form(method="POST")
 		label.form__label title
 			input.form__input(type="text", name="title", value=title)
