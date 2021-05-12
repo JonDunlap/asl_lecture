@@ -1,0 +1,15 @@
+extends ../_layout
+block content
+	h1.heading New Decision
+	form.form(method="POST")
+		label.form__label title
+			input.form__input(type="text", name="title")
+		label.form__label
+			span.form__labelInline Is this decision public?
+			label.form__labelInline
+				input.form__input__radio(type="radio", name="type", value="public")
+				span yes
+			label.form__labelInline
+				input.form__input__radio(type="radio", name="type", value="private")
+				span no
+		button.button(type="submit") Save
