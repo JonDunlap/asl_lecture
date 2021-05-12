@@ -7,10 +7,10 @@ block content
 		label.form__label
 			span.form__labelInline Is this decision public?
 			label.form__labelInline
-				input.form__input__radio(type="radio", name="type", value="public", checkedType === 'public')
+				input.form__input__radio(type="radio", name="type", value="public", checked=type === 'public')
 				span yes
 			label.form__labelInline
-				input.form__input__radio(type="radio", name="type", value="private", checkedType === 'private')
+				input.form__input__radio(type="radio", name="type", value="private", checked=type === 'private')
 				span no
 		button.button(type="submit") Save
 		if errors
