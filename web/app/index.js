@@ -12,6 +12,8 @@ const app = express();
 
 // setup a folder to hold all the static files
 app.use(express.static('public'));
+// checks to see if the content-type is url-encoded and parses it into req.body
+app.use(express.urlencoded({ extended: true }));
 // axios middleware
 app.use(API);
 
