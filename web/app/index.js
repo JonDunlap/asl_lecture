@@ -2,11 +2,15 @@
 const express = require('express');
 // add the logger
 const error = require('debug')('web:error');
+// load in the axios middleware
+const API = require('./utils/API');
 // create an express app
 const app = express();
 
 // setup a folder to hold all the static files
 app.use(express.static('public'));
+// axios middleware
+app.use(API);
 
 // four params are required to mark this as an error handling middleware
 // the comment below allows for eslint to not throw an error
