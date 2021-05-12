@@ -6,7 +6,7 @@ exports.renderLanding = async (req, res) => {
 };
 
 exports.renderDecisionForm = (req, res) => {
-  res.render('decisions/form');
+  res.render('decisions/form', { title: '', type: 'private' });
 };
 
 // four params are required to mark this as an error handling middleware
