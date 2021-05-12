@@ -15,6 +15,12 @@ router.post('/new', [
 ]);
 // GET /admin/decisions/edit/:id - loads the edit form
 router.get('/edit/:id', decisionCtrl.renderEditForm);
+// POST /admin/decisions/edit/:id - validate the data and then save it
+router.post('/edit/:id', [
+  validationCtrl.validate('editDecision'),
+  decisionCtrl.renderDecisionFormWithErrors,
+  decisionCtrl.saveDecision,
+]);
 
 // export the route from this file
 module.exports = router;
