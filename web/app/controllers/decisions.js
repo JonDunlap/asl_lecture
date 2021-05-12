@@ -22,9 +22,20 @@ exports.renderDecisionFormWithErrors = (errors, req, res, next) => {
 exports.saveDecision = async (req, res) => {
   // get the data the user submitted
   const { title, type } = req.body;
+  // pull the id from the request params
+  const { id } = req.params;
 
-  // send the new decision to the api
-  const data = await req.API.post('/decisions', { title, type });
+  // variable to hold the data from our api request
+  let data = {};
+
+  // if there is an id, we are editing, if there isn't we are adding
+  if (id) {
+    // make a put request with the updated information
+    data = await req.API.put(`/decisions/${id}`, { title, type });
+  } else {
+    // send the new decision to the API
+    data = await req.API.post('/decisions', { title, type });
+  }
 
   // redirect to the edit decision form
   res.redirect(`/admin/decisions/edit/${data.id}`);
