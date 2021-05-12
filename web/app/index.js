@@ -12,6 +12,11 @@ app.use(express.static('public'));
 // axios middleware
 app.use(API);
 
+// set pug as the view engine
+app.set('view engine', 'pug');
+// set the view folder as the default place to render from
+app.set('views', `${__dirname}/views`);
+
 // four params are required to mark this as an error handling middleware
 // the comment below allows for eslint to not throw an error
 // because I am not using the next function
