@@ -4,3 +4,7 @@ exports.renderLanding = async (req, res) => {
   // render the landing page from the views and pass it the decisions
   res.render('landing', { decisions });
 };
+
+exports.renderDecisionForm = (req, res) => {
+  res.render('decisions/form');
+};
