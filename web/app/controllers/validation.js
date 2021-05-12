@@ -1,6 +1,9 @@
 const { check, validationResult } = require('express-validator');
 
 const checks = {
+  id: check('id')
+    .isUUID()
+    .withMessage('ID not valid, please go back and try again.'),
   title: check('title')
     .exists()
     .withMessage('Decision title is required.')
@@ -29,6 +32,10 @@ exports.validate = (method) => {
   switch (method) {
     case 'createDecisions': {
       return [checks.title, checks.type, checkForErrors];
+    }
+
+    case 'editDecision': {
+      return [checks.id, checks.title, checks.type, checkForErrors];
     }
 
     default: {
