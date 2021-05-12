@@ -9,4 +9,14 @@ module.exports = [
     title: 'What should we do tonight?',
     type: 'private',
   },
+  {
+    id: 'd68fbb13-6201-47b8-b765-79f4f96a6656',
+    title: 'Where is my sandwich at?',
+    type: 'public',
+  },
+  {
+    id: 'd904ea5b-88f1-4c43-9a24-94918e22709a',
+    title: 'Here I am, or am I?',
+    type: 'private',
+  },
 ];
