@@ -63,7 +63,7 @@ exports.deleteDecision = async (req, res) => {
   const { id } = req.params;
 
   // send the delete request to the API
-  await req.API.delete(`/decisions${id}`);
+  await req.API.delete(`/decisions/${id}`);
 
   // redirect to the dashboard
   res.redirect('/admin/decisions');
