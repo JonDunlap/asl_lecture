@@ -29,3 +29,14 @@ exports.saveDecision = async (req, res) => {
   // redirect to the edit decision form
   res.redirect(`/admin/decisions/edit/${data.id}`);
 };
+
+exports.renderDecisionForm = async (req, res) => {
+  // get the id from the request params
+  const { id } = req.params;
+
+  // get the details of the decision
+  const decision = await req.API.get(`/decisions/${id}`);
+
+  // render the edit form
+  res.render('decisions/form', decision);
+};

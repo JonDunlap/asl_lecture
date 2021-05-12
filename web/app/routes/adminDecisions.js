@@ -13,6 +13,8 @@ router.post('/new', [
   decisionCtrl.renderDecisionFormWithErrors,
   decisionCtrl.saveDecision,
 ]);
+// GET /admin/decisions/edit/:id - loads the edit form
+router.get('/edit/:id', decisionCtrl.renderEditForm);
 
 // export the route from this file
 module.exports = router;
