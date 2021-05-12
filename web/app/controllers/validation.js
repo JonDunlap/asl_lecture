@@ -38,6 +38,10 @@ exports.validate = (method) => {
       return [checks.id, checks.title, checks.type, checkForErrors];
     }
 
+    case 'deleteDecision': {
+      return [checks.id, checkForErrors];
+    }
+
     default: {
       return [];
     }

@@ -51,3 +51,20 @@ exports.renderEditForm = async (req, res) => {
   // render the edit form
   res.render('decisions/form', decision);
 };
+
+// four params are required to mark this as an error handling middleware
+//  eslint-disable-next-line no-unused-vars
+exports.goBackOnError = (errors, req, res, next) => {
+  // passing 'back' to redirect sends the user back to the page they came from
+  res.redirect('back');
+};
+
+exports.deleteDecision = async (req, res) => {
+  const { id } = req.params;
+
+  // send the delete request to the API
+  await req.API.delete(`/decisions${id}`);
+
+  // redirect to the dashboard
+  res.redirect('/admin/decisions');
+};

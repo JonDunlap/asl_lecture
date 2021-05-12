@@ -21,6 +21,12 @@ router.post('/edit/:id', [
   decisionCtrl.renderDecisionFormWithErrors,
   decisionCtrl.saveDecision,
 ]);
+// GET /admin/decisions/delete/:id - deletes a decision
+router.get('/delete/:id', [
+  validationCtrl.validate('deleteDecision'),
+  decisionCtrl.goBackOnError,
+  decisionCtrl.deleteDecision,
+]);
 
 // export the route from this file
 module.exports = router;
