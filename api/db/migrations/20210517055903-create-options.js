@@ -12,6 +12,15 @@ module.exports = {
         type: Sequelize.STRING,
       },
 
+      decisionId: {
+        type: Sequelize.UUID,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Decisions',
+          key: 'id',
+        },
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
