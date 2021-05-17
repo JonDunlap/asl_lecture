@@ -6,8 +6,20 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         type: DataTypes.UUID,
+        validate: {
+          isUUID: {
+            args: 4,
+            msg: 'Id not valid, please go back and try again.',
+          },
+        },
       },
-      value: DataTypes.STRING,
+
+      value: {
+        type: DataTypes.STRING,
+        validate: {
+          len: { args: [3, 500], msg: 'Option value is required' },
+        },
+      },
     },
     {}
   );
