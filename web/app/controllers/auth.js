@@ -31,6 +31,7 @@ exports.verifySlackCode = async (req, res) => {
   // save the loggedIn state and token to the session
   req.session.loggedIn = loggedIn;
   req.session.token = token;
+
   // go to the admin dashboard
   res.redirect('/admin/decisions');
 };
