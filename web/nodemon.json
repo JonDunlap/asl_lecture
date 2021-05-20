@@ -1,7 +1,9 @@
 {
   "env": {
     "DEBUG": "web:*",
+    "SECRET": "aaRFFFoQgfaFTxTbDgs6xcbwBsggRoikm2zvaFBGHfTQUH6iaXbKiWq20o3hK1RYra30FSHDmu0VV17TMHNSix3HewoDawROEUTICtXnjDUnWX0J7Izsywg2WcmgjKzPZJe7rPfveaGrIuuuW4Jegz6RQjnmFvxfdb3ALTHUJvn8jxz7lJnnNGAF4g5jajoZIGLiqgSGH9fpLDE9OE00OLOHP0jS92J3TcDVxZCcKkTevvPA3yn0t9XUQl",
     "CLIENT_ID": "2228117327.575354274035",
     "CALLBACK_URL": "http://localhost:3000/slack/callback"
-  }
+  },
+  "ignore": "sessions"
 }
