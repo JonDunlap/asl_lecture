@@ -33,6 +33,16 @@ app.use(
   })
 );
 
+// middleware function for passing default data to the templates
+app.use((req, res, next) => {
+  // pull the loggedIn state out of the session
+  const { loggedIn = false } = req.session;
+  // set it to locals (data passed to the templates)
+  res.locals.loggedIn = loggedIn;
+  // go to the next middleware function
+  next();
+});
+
 // setup a folder to hold all the static files
 app.use(express.static('public'));
 // checks to see if the content-type is url-encoded and parses it into req.body
