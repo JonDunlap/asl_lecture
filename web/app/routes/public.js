@@ -13,6 +13,8 @@ router.get('/login', authCtrl.renderLogin);
 router.get('/login/slack', authCtrl.redirectToSlack);
 // GET /slack/callback - the route that is hit when coming from Slack
 router.get('/slack/callback', authCtrl.verifySlackCode);
+// GET /logout - log the user out of the application
+router.get('/logout', authCtrl.logout);
 
 // export the router
 module.exports = router;

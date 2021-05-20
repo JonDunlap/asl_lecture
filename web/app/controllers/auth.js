@@ -34,3 +34,10 @@ exports.verifySlackCode = async (req, res) => {
   // go to the admin dashboard
   res.redirect('/admin/decisions');
 };
+
+exports.logout = (req, res) => {
+  // destroy the user's session data (token and loggedIn)
+  req.session.destroy();
+  // send the user back to the home page
+  res.redirect('/');
+};
