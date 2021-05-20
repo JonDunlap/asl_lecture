@@ -1,12 +1,13 @@
 const axios = require('axios');
 const error = require('debug')('api:error');
+const { Users } = require('../models');
 
 exports.exchangeCode = async (req, res) => {
   // pull the code from the request body
   const { code, url } = req.body;
 
   try {
-    // maek a request to slack for the access token
+    // make a request to slack for the access token
     const { data } = await axios.get('https://slack.com/api/oauth.access', {
       params: {
         client_id: process.env.CLIENT_ID,
@@ -16,7 +17,16 @@ exports.exchangeCode = async (req, res) => {
       },
     });
 
-    console.log(data);
+    const [user] = await Users.upsert(
+      {
+        username: data.user.email,
+        access_token: data.access_token,
+        name: data.user.name,
+        type: 'slack',
+      },
+      { returning: true }
+    );
+    console.log('user', user);
   } catch (e) {
     // log the error
     error(e);
