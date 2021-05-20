@@ -4,7 +4,7 @@ const router = require('express').Router();
 const authCtrl = require('../controllers/auth');
 
 // POST /auth/slack - receives a code and will exchange it for a access token
-router.post('/auth/slack', authCtrl.exchangeCode);
+router.post('/slack', authCtrl.exchangeCode);
 
 // export the route from this file
 module.exports = router;
