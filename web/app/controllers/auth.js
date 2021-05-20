@@ -19,3 +19,18 @@ exports.redirectToSlack = (req, res) => {
   log(SLACK_URL + params);
   res.redirect(SLACK_URL + params);
 };
+
+exports.verifySlackCode = async (req, res) => {
+  // pull the code sent from slack out of the URL
+  const { code } = req.query;
+  // make an API request to verify the code
+  const { token, loggedIn } = await req.API.post('/auth/slack', {
+    code,
+    url: process.env.CALLBACK_URL,
+  });
+  // save the loggedIn state and token to the session
+  req.session.loggedIn = loggedIn;
+  req.session.token = token;
+  // go to the admin dashboard
+  res.redirect('/admin/decisions');
+};
