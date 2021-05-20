@@ -2,7 +2,9 @@
 const express = require('express');
 // add the logger
 const error = require('debug')('web:error');
+// middleware for sessions
 const expressSession = require('express-session');
+// store for saving sessions
 const FileStore = require('session-file-store')(expressSession);
 
 // load in the axios middleware
