@@ -9,7 +9,7 @@ const protectedRoute = require('../utils/protectedRoute');
 router.get('/', protectedRoute, decisionCtrl.getAll);
 // GET /decisions/public
 router.get('/public', decisionCtrl.getPublic);
-// GET /decisions/public/:id
+// GET /decisions/:id
 router.get('/:id', decisionCtrl.getOneById);
 // POST /decisions
 router.post('/', protectedRoute, decisionCtrl.createDecision);
