@@ -4,7 +4,8 @@ const { Decisions } = require('../models');
 // get all the decisions
 exports.getAll = async (req, res) => {
   // run the find all function on the model
-  const decisions = await Decisions.findAll();
+  // filter the decisions to only decisions that were created by the user
+  const decisions = await Decisions.findAll({ where: { userId: req.userId } });
   // respond with json of the decisions array
   res.json(decisions);
 };
@@ -44,7 +45,11 @@ exports.createDecision = async (req, res) => {
 
   try {
     // create the item and save the new decision
-    const newDecision = await Decisions.create({ title, type });
+    const newDecision = await Decisions.create({
+      title,
+      type,
+      userId: req.userId,
+    });
     // send the new id back to the request
     res.json({ id: newDecision.id });
   } catch (e) {
