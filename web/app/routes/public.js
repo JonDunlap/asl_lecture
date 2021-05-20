@@ -9,6 +9,8 @@ const authCtrl = require('../controllers/auth');
 router.get('/', decisionCtrl.renderLanding);
 // GET /login - loads the login page
 router.get('/login', authCtrl.renderLogin);
+// GET /login/slack - sends the user to Slack for authentication
+router.get('/login/slack', authCtrl.redirectToSlack);
 
 // export the router
 module.exports = router;
