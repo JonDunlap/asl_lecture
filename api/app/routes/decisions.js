@@ -2,17 +2,20 @@
 const router = require('express').Router();
 // import the decision controller
 const decisionCtrl = require('../controllers/decisions');
+// import teh protectedRoute middleware
+const protectedRoute = require('../utils/protectedRoute');
+
 // GET /decisions route
-router.get('/', decisionCtrl.getAll);
+router.get('/', protectedRoute, decisionCtrl.getAll);
 // GET /decisions/public
 router.get('/public', decisionCtrl.getPublic);
 // GET /decisions/public/:id
 router.get('/:id', decisionCtrl.getOneById);
 // POST /decisions
-router.post('/', decisionCtrl.createDecision);
+router.post('/', protectedRoute, decisionCtrl.createDecision);
 // PUT /decisions/:id
-router.put('/:id', decisionCtrl.updateDecision);
+router.put('/:id', protectedRoute, decisionCtrl.updateDecision);
 // DELETE /decisions/:id
-router.delete('/:id', decisionCtrl.removeDecision);
+router.delete('/:id', protectedRoute, decisionCtrl.removeDecision);
 // export the route from this file
 module.exports = router;
