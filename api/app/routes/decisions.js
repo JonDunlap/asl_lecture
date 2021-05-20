@@ -2,7 +2,7 @@
 const router = require('express').Router();
 // import the decision controller
 const decisionCtrl = require('../controllers/decisions');
-// import teh protectedRoute middleware
+// import the protectedRoute middleware
 const protectedRoute = require('../utils/protectedRoute');
 
 // GET /decisions route
