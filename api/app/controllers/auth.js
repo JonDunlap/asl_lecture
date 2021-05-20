@@ -1,5 +1,6 @@
 const axios = require('axios');
 const error = require('debug')('api:error');
+const jwt = require('jsonwebtoken');
 const { Users } = require('../models');
 
 exports.exchangeCode = async (req, res) => {
@@ -26,7 +27,9 @@ exports.exchangeCode = async (req, res) => {
       },
       { returning: true }
     );
-    console.log('user', user);
+
+    const token = jwt.sign({ id: user.id }, process.env.SECRET);
+    res.json({ token, loggedIn: true });
   } catch (e) {
     // log the error
     error(e);
