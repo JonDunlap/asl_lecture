@@ -11,6 +11,8 @@ router.get('/', decisionCtrl.renderLanding);
 router.get('/login', authCtrl.renderLogin);
 // GET /login/slack - sends the user to Slack for authentication
 router.get('/login/slack', authCtrl.redirectToSlack);
+// GET /slack/callback - the route that is hit when coming from Slack
+router.get('/slack/callback', authCtrl.verifySlackCode);
 
 // export the router
 module.exports = router;
