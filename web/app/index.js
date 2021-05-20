@@ -2,8 +2,12 @@
 const express = require('express');
 // add the logger
 const error = require('debug')('web:error');
+const expressSession = require('express-session');
+const FileStore = require('session-file-store')(expressSession);
+
 // load in the axios middleware
 const API = require('./utils/API');
+
 // load routers
 const publicRoutes = require('./routes/public');
 const adminDecisionRoutes = require('./routes/adminDecisions');
@@ -11,6 +15,20 @@ const adminOptionsRoutes = require('./routes/adminOptions');
 
 // create an express app
 const app = express();
+
+// session middleware
+app.use(
+  expressSession({
+    // another secret used for encoding session data
+    secret: process.env.SECRET,
+    // should the session save again if nothing has changed?
+    resave: false,
+    // should sessions be created if they have no data
+    saveUninitialized: false,
+    // where to store the session data
+    store: new FileStore(),
+  })
+);
 
 // setup a folder to hold all the static files
 app.use(express.static('public'));
