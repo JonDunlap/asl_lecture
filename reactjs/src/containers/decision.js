@@ -34,6 +34,7 @@ export default function container(Component) {
           decision={decision}
           options={options}
           fetchDecision={this.fetchDecision}
+          saveDecision={this.saveDecision}
         />
       );
     }
