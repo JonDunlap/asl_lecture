@@ -13,6 +13,17 @@ class DecisionForm extends Component {
     };
   }
 
+  componentDidMount() {
+    // get the id from the route params
+    const {
+      fetchDecision,
+      match: {
+        params: { id },
+      },
+    } = this.props;
+    if (id) fetchDecision(id);
+  }
+
   handleInputChange = (event) => {
     // pull the name of the input and value of input out of the event object
     const {
@@ -106,7 +117,9 @@ DecisionForm.propTypes = {
     type: PropTypes.string,
   }),
   saveDecision: PropTypes.func.isRequired,
+  fetchDecision: PropTypes.func.isRequired,
   history: RRPropTypes.history.isRequired,
+  match: RRPropTypes.match.isRequired,
 };
 
 DecisionForm.defaultProps = {
