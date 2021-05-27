@@ -10,11 +10,10 @@ class App extends Component {
     return (
       <Router>
         <div className={styles.body}>
-          <Route path='/' component={Header}>
-            <main className={styles.main__container}>
-              <Route path='(/login|/slack/callback)' exact component={Login} />
-            </main>
-          </Route>
+          <Route path='/' component={Header} />
+          <main className={styles.main__container}>
+            <Route path='(/login|/slack/callback)' exact component={Login} />
+          </main>
         </div>
       </Router>
     );
