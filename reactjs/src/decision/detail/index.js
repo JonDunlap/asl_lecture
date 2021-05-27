@@ -18,6 +18,14 @@ class DecisionDetail extends React.Component {
     fetchDecision(id);
   }
 
+  delete = async () => {
+    const {
+      deleteDecision,
+      decision: { id },
+    } = this.props;
+    await deleteDecision(id);
+  };
+
   render() {
     const { decision, options } = this.props;
 
@@ -31,12 +39,14 @@ class DecisionDetail extends React.Component {
             title='Edit'
             icon='fa-edit'
           />
-          <Link
-            url='/admin/decisions/'
-            title='Delete'
-            icon='fa-trash'
-            className='linkSecondary'
-          />
+          <span onClick={this.delete} role='presentation'>
+            <Link
+              url='/admin/decisions/'
+              title='Delete'
+              icon='fa-trash'
+              className='linkSecondary'
+            />
+          </span>
         </h1>
         <h2 className={styles.headingSecondary}>Options</h2>
         <ul className={styles.list}>
@@ -66,6 +76,7 @@ DecisionDetail.propTypes = {
   decision: PropTypes.shape({ title: PropTypes.string, id: PropTypes.string }),
   options: PropTypes.arrayOf(PropTypes.object),
   fetchDecision: PropTypes.func.isRequired,
+  deleteDecision: PropTypes.func.isRequired,
   match: RRPropTypes.match.isRequired,
 };
 
