@@ -26,6 +26,11 @@ class App extends Component {
                 component={DecisionForm}
               />
               <Route
+                path='/admin/decisions/edit/:id'
+                exact
+                component={DecisionForm}
+              />
+              <Route
                 path='/admin/decisions/:id'
                 exact
                 component={DecisionDetail}
