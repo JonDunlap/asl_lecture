@@ -17,6 +17,13 @@ export default function container(Component) {
       this.setState({ decision, options });
     };
 
+    saveDecision = async (decision) => {
+      if (decision.id) {
+        return API.put(`/decisions/${decision.id}`, decision);
+      }
+      return API.post('/decisions', decision);
+    };
+
     render() {
       const { decision, options } = this.state;
 
