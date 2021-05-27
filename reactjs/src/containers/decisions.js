@@ -6,6 +6,7 @@ export default function container(Component) {
     // the default state
     state = {
       userDecisions: [],
+      publicDecisions: [],
     };
 
     // get this user's decisions
@@ -16,15 +17,25 @@ export default function container(Component) {
       this.setState({ userDecisions });
     };
 
+    // get the public decisions
+    fetchPublicDecisions = async () => {
+      // get the public decisions from the API
+      const publicDecisions = await API.get('/decisions/public');
+      // update the state
+      this.setState({ publicDecisions });
+    };
+
     render() {
-      const { userDecisions } = this.state;
+      const { userDecisions, publicDecisions } = this.state;
 
       return (
         <Component
           /* pass all other props that are being passed to this component forward */
           {...this.props}
           userDecisions={userDecisions}
+          publicDecisions={publicDecisions}
           fetchUserDecisions={this.fetchUserDecisions}
+          fetchPublicDecisions={this.fetchPublicDecisions}
         />
       );
     }
