@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RRPropTypes from 'react-router-prop-types';
+import { Redirect } from 'react-router-dom';
 import styles from './styles.module.css';
 import AuthContainer from '../containers/auth';
 
@@ -24,6 +25,9 @@ class Login extends React.Component {
   };
 
   render() {
+    const { loggedIn } = this.props;
+    if (loggedIn) return <Redirect to='/admin/decisions' />;
+
     return (
       <>
         <h1>Login</h1>
@@ -44,8 +48,13 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
+  loggedIn: PropTypes.bool,
   verifySlackCode: PropTypes.func.isRequired,
   location: RRPropTypes.location.isRequired,
+};
+
+Login.defaultProps = {
+  loggedIn: false,
 };
 
 export default AuthContainer(Login);
