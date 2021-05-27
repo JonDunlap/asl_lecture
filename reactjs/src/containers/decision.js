@@ -24,6 +24,10 @@ export default function container(Component) {
       return API.post('/decisions', decision);
     };
 
+    deleteDecision = async (id) => {
+      await API.delete(`/decisions/${id}`);
+    };
+
     render() {
       const { decision, options } = this.state;
 
@@ -35,6 +39,7 @@ export default function container(Component) {
           options={options}
           fetchDecision={this.fetchDecision}
           saveDecision={this.saveDecision}
+          deleteDecision={this.deleteDecision}
         />
       );
     }
