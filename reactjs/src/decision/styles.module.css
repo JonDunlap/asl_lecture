@@ -20,3 +20,11 @@
   font-size: 20px;
   flex-grow: 2;
 }
+
+.heading {
+  composes: heading from '../brand.css';
+}
+
+.button {
+  composes: button from '../brand.css';
+}
