@@ -27,12 +27,12 @@ class DecisionDetail extends React.Component {
           {decision.title}
           <Link url={`/decision/${decision.id}`} />
           <Link
-            url={`admin/decision/edit/${decision.id}`}
+            url={`/admin/decision/edit/${decision.id}`}
             title='Edit'
             icon='fa-edit'
           />
           <Link
-            url='admin/decision/'
+            url='/admin/decision/'
             title='Delete'
             icon='fa-trash'
             className='linkSecondary'
