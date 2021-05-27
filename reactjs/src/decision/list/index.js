@@ -18,7 +18,7 @@ class DecisionList extends React.Component {
         <h1 className={styles.heading}>My Decisions</h1>
         <ul className={styles.list}>
           {userDecisions.map((decision) => (
-            <li className={styles.list__item}>
+            <li className={styles.list__item} key={decision.id}>
               <span className={styles.list__item__title}>{decision.title}</span>
               <Link url={`/decisions/${decision.id}`} />
               <Link
