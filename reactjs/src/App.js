@@ -6,6 +6,7 @@ import Header from './header';
 import Login from './login';
 import DecisionList from './decision/list';
 import Landing from './decision/landing';
+import DecisionDetail from './decision/detail';
 
 class App extends Component {
   render() {
@@ -17,6 +18,11 @@ class App extends Component {
             <Route path='/' exact component={Landing} />
             <Route path='(/login|/slack/callback)' exact component={Login} />
             <Route path='/admin/decisions' exact component={DecisionList} />
+            <Route
+              path='/admin/decisions/:id'
+              exact
+              component={DecisionDetail}
+            />
           </main>
         </div>
       </Router>
