@@ -2,6 +2,7 @@
 const error = require('debug')('api:error');
 const express = require('express');
 const morganDebug = require('morgan-debug');
+const cors = require('cors');
 
 // routes
 const decisionRouter = require('./routes/decisions');
@@ -10,6 +11,7 @@ const authRouter = require('./routes/auth');
 
 // create an express application
 const app = express();
+app.use(cors());
 
 // checks to see if the content-type is json and parses it into req.body
 app.use(express.json());
