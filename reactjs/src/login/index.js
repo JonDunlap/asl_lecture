@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RRPropTypes from 'react-router-prop-types';
 import styles from './styles.module.css';
+import AuthContainer from '../containers/auth';
 
 class Login extends React.Component {
   componentDidMount() {
@@ -46,3 +47,5 @@ Login.propTypes = {
   verifySlackCode: PropTypes.func.isRequired,
   location: RRPropTypes.location.isRequired,
 };
+
+export default AuthContainer(Login);
